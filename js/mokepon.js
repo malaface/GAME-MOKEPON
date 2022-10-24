@@ -4,12 +4,19 @@ function iniciarJuego() {
 }
 
 function seleccionarMascotaJugador(){
-    if (document.getElementById('hipodoge').checked)
-    alert('SELECCIONASTE UN HIPODOGE')
-    else if(document.getElementById('capipepo').checked)
-    alert('SELECCIONASTE UN CAPIPEPO')
-    else if(document.getElementById('ratigueya').checked)
-    alert('SELECCIONASTE UN RATIGUEYA')
+    let inputHipodoge = document.getElementById('hipodoge')
+    let inputCapipepo = document.getElementById('capipepo')
+    let inputRatigueya = document.getElementById('ratigueya') 
+
+    if (inputHipodoge.checked) {
+        alert('SELECCIONASTE UN HIPODOGE')
+    } else if(inputCapipepo.checked) {
+        alert('SELECCIONASTE UN CAPIPEPO')
+    } else if(inputRatigueya.checked) {
+        alert('SELECCIONASTE UN RATIGUEYA')
+    } else {
+        alert('Tienes que seleccionar un MOKEPON!')
+    }
 }
 
 
