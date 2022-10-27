@@ -18,7 +18,24 @@ function seleccionarMascotaJugador(){
     } else {
         alert('Tienes que seleccionar un MOKEPON!')
     }
+    seleccionarMascotaEnemigo()
 }
 
+function aleatorio(min, max){
+    return Math.floor(Math.random()*(max-min+1)+min)
+}
+
+function seleccionarMascotaEnemigo(){
+    let mascotaAleatorio = aleatorio(1,3)
+    let spanMascotaEnemigo = document.getElementById('mascota-enemigo')
+
+    if (mascotaAleatorio == 1) {
+        spanMascotaEnemigo.innerHTML = 'Hipodoge'
+    } else if (mascotaAleatorio == 2){
+        spanMascotaEnemigo.innerHTML = 'Capipepo'
+    } else {
+        spanMascotaEnemigo.innerHTML = 'Ratigueya'
+    }
+}
 
 window.addEventListener('load', iniciarJuego)
