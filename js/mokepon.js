@@ -57,19 +57,16 @@ function seleccionarMascotaEnemigo(){
 
 function ataqueFuego(){
     ataqueJugador = 'Fuego'
-    alert(ataqueJugador)
     seleccionarAtaqueEnemigo()
 }
 
 function ataqueAgua(){
     ataqueJugador = 'Agua'
-    alert(ataqueJugador)
     seleccionarAtaqueEnemigo()
 }
 
 function ataquePlanta(){
     ataqueJugador = 'Planta'
-    alert(ataqueJugador)
     seleccionarAtaqueEnemigo()
 }
 
@@ -78,14 +75,23 @@ function seleccionarAtaqueEnemigo(){
 
     if (ataqueAleatorio == 1 ){
         ataqueEnemigo = 'Fuego'
-        alert('Tu enemigo usa un ataque tipo '+ ataqueEnemigo)
     } else if(ataqueAleatorio == 2 ){
         ataqueEnemigo = 'Agua'
-        alert('Tu enemigo usa un ataque tipo '+ ataqueEnemigo)
     } else {
         ataqueEnemigo = 'Planta'
-        alert('Tu enemigo usa un ataque tipo '+ ataqueEnemigo)
     }
+    crearMensaje()
+}
+// creatElement nos permite crear cualquier tipo de texto HTML desde Javascript.
+// appendChield nos permite agregar ese texto en una seccion especifica de nuestra pagina
+function crearMensaje(){
+    let seccionMensaje = document.getElementById('mensajes')
+
+    let parrafo = document.createElement('p')
+    parrafo.innerHTML = 'Tu mascota ataco con ' + ataqueJugador + 
+    ', Tu contrincante ataco con ' + ataqueEnemigo 
+
+    seccionMensaje.appendChild(parrafo)
 }
 
 window.addEventListener('load', iniciarJuego)
