@@ -58,16 +58,34 @@ function seleccionarMascotaEnemigo(){
 function ataqueFuego(){
     ataqueJugador = 'Fuego'
     alert(ataqueJugador)
+    seleccionarAtaqueEnemigo()
 }
 
 function ataqueAgua(){
     ataqueJugador = 'Agua'
     alert(ataqueJugador)
+    seleccionarAtaqueEnemigo()
 }
 
 function ataquePlanta(){
     ataqueJugador = 'Planta'
     alert(ataqueJugador)
+    seleccionarAtaqueEnemigo()
+}
+
+function seleccionarAtaqueEnemigo(){
+    let ataqueAleatorio = aleatorio(1,3)
+
+    if (ataqueAleatorio == 1 ){
+        ataqueEnemigo = 'Fuego'
+        alert('Tu enemigo usa un ataque tipo '+ ataqueEnemigo)
+    } else if(ataqueAleatorio == 2 ){
+        ataqueEnemigo = 'Agua'
+        alert('Tu enemigo usa un ataque tipo '+ ataqueEnemigo)
+    } else {
+        ataqueEnemigo = 'Planta'
+        alert('Tu enemigo usa un ataque tipo '+ ataqueEnemigo)
+    }
 }
 
 window.addEventListener('load', iniciarJuego)
