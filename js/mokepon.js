@@ -56,17 +56,17 @@ function seleccionarMascotaEnemigo(){
 }
 
 function ataqueFuego(){
-    ataqueJugador = 'Fuego'
+    ataqueJugador = 'Fuego 🔥'
     seleccionarAtaqueEnemigo()
 }
 
 function ataqueAgua(){
-    ataqueJugador = 'Agua'
+    ataqueJugador = 'Agua 🌊'
     seleccionarAtaqueEnemigo()
 }
 
 function ataquePlanta(){
-    ataqueJugador = 'Planta'
+    ataqueJugador = 'Planta 🌱'
     seleccionarAtaqueEnemigo()
 }
 
@@ -74,22 +74,36 @@ function seleccionarAtaqueEnemigo(){
     let ataqueAleatorio = aleatorio(1,3)
 
     if (ataqueAleatorio == 1 ){
-        ataqueEnemigo = 'Fuego'
+        ataqueEnemigo = 'Fuego 🔥'
     } else if(ataqueAleatorio == 2 ){
-        ataqueEnemigo = 'Agua'
+        ataqueEnemigo = 'Agua 🌊'
     } else {
-        ataqueEnemigo = 'Planta'
+        ataqueEnemigo = 'Planta 🌱'
     }
-    crearMensaje()
+   combate()
 }
+
+function combate(){
+    
+    if (ataqueJugador == ataqueEnemigo){
+        crearMensaje(', EMPATE!')
+    }
+    else if ((ataqueJugador == 'Fuego 🔥' && ataqueEnemigo == 'Planta 🌱')||(ataqueJugador == 'Agua 🌊' && ataqueEnemigo == 'Fuego 🔥')||(ataqueJugador == 'Planta 🌱' && ataqueEnemigo == 'Agua 🌊')) {
+        crearMensaje(', GANASTE!')
+    } else {
+        crearMensaje(', PERDISTE!')
+    }
+}
+
 // creatElement nos permite crear cualquier tipo de texto HTML desde Javascript.
 // appendChield nos permite agregar ese texto en una seccion especifica de nuestra pagina
-function crearMensaje(){
+function crearMensaje(resultado){
     let seccionMensaje = document.getElementById('mensajes')
 
     let parrafo = document.createElement('p')
+
     parrafo.innerHTML = 'Tu mascota ataco con ' + ataqueJugador + 
-    ', Tu contrincante ataco con ' + ataqueEnemigo 
+    ', Tu contrincante ataco con ' + ataqueEnemigo + resultado
 
     seccionMensaje.appendChild(parrafo)
 }
