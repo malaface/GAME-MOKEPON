@@ -1,6 +1,8 @@
 // Las variables glogales de crean sin ningun valor preasignado
 let ataqueJugador
 let ataqueEnemigo 
+let vidaJugador = 3
+let vidaEnemigo = 3
 
 function iniciarJuego() {
     let botonMascotaJugador = document.getElementById('boton-mascota')
@@ -85,20 +87,27 @@ function seleccionarAtaqueEnemigo(){
 
 function combate(){
     
+    let spanVidaJugador = document.getElementById('vida-jugador')
+    let spanVidaEmemigo = document.getElementById('vida-enemigo')
+
     if (ataqueJugador == ataqueEnemigo){
         crearMensaje(', EMPATE!')
     }
     else if ((ataqueJugador == 'Fuego 🔥' && ataqueEnemigo == 'Planta 🌱')||(ataqueJugador == 'Agua 🌊' && ataqueEnemigo == 'Fuego 🔥')||(ataqueJugador == 'Planta 🌱' && ataqueEnemigo == 'Agua 🌊')) {
+        vidaEnemigo--
         crearMensaje(', GANASTE!')
+        spanVidaEmemigo.innerHTML = vidaEnemigo
     } else {
+        vidaJugador--
         crearMensaje(', PERDISTE!')
+        spanVidaJugador.innerHTML =  vidaJugador
     }
 }
 
 // creatElement nos permite crear cualquier tipo de texto HTML desde Javascript.
 // appendChield nos permite agregar ese texto en una seccion especifica de nuestra pagina
 function crearMensaje(resultado){
-    let seccionMensaje = document.getElementById('mensajes')
+    let seccionMensaje = document.getElementById('mensajes') 
 
     let parrafo = document.createElement('p')
 
