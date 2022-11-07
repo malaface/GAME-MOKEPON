@@ -82,7 +82,8 @@ function seleccionarAtaqueEnemigo(){
     } else {
         ataqueEnemigo = 'Planta 🌱'
     }
-   combate()
+        combate()
+   
 }
 
 function combate(){
@@ -102,6 +103,21 @@ function combate(){
         crearMensaje(', PERDISTE!')
         spanVidaJugador.innerHTML =  vidaJugador
     }
+    revisarVidas()
+}
+
+function revisarVidas() {
+    let seccionMensaje = document.getElementById('mensajes') 
+
+    let parrafo = document.createElement('p')
+
+    if (vidaJugador == 0) {
+        parrafo.innerHTML = 'Perdiste la batalla😢, si quieres volver a jugar da Click en reiniciar'
+    } else if(vidaEnemigo == 0){
+        parrafo.innerHTML = 'FELICIDADES! Ganaste la batalla😄, si quieres volver a jugar da Click en reiniciar'
+    }
+    seccionMensaje.appendChild(parrafo)
+
 }
 
 // creatElement nos permite crear cualquier tipo de texto HTML desde Javascript.
