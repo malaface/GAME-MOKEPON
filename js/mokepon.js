@@ -5,6 +5,11 @@ let vidaJugador = 3
 let vidaEnemigo = 3
 
 function iniciarJuego() {
+    let sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
+    sectionSeleccionarAtaque.style.display = 'none'
+    let sectionReiniciar = document.getElementById('reiniciar')
+    sectionReiniciar.style.display = 'none'
+
     let botonMascotaJugador = document.getElementById('boton-mascota')
     botonMascotaJugador.addEventListener('click', seleccionarMascotaJugador)
 
@@ -40,6 +45,12 @@ function aleatorio(min, max){
 }
 
 function seleccionarMascotaEnemigo(){
+    let sectionSeleccionarMascota = document.getElementById('seleccionar-mascota')
+    sectionSeleccionarMascota.style.display = 'none'
+
+    let sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
+    sectionSeleccionarAtaque.style.display = 'block'
+
     let mascotaAleatorio = aleatorio(1,3)
     let spanMascotaEnemigo = document.getElementById('mascota-enemigo')
 
@@ -116,6 +127,9 @@ function revisarVidas() {
 }
 
 function mensajeFinal(resultadoFinal){
+    let sectionReiniciar = document.getElementById('reiniciar')
+    sectionReiniciar.style.display = 'block'
+
     let seccionMensaje = document.getElementById('mensajes') 
 
     let parrafo = document.createElement('p')
