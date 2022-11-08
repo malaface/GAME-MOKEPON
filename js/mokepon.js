@@ -8,6 +8,8 @@ function iniciarJuego() {
     let botonMascotaJugador = document.getElementById('boton-mascota')
     botonMascotaJugador.addEventListener('click', seleccionarMascotaJugador)
 
+    let botonReiniciar = document.getElementById('boton-reiniciar')
+    botonReiniciar.addEventListener('click', reiniciar)
 }
 
 function seleccionarMascotaJugador(){
@@ -82,8 +84,7 @@ function seleccionarAtaqueEnemigo(){
     } else {
         ataqueEnemigo = 'Planta 🌱'
     }
-        combate()
-   
+        combate()  
 }
 
 function combate(){
@@ -107,16 +108,27 @@ function combate(){
 }
 
 function revisarVidas() {
+    if (vidaJugador == 0) {
+        mensajeFinal('Perdiste la batalla😢, si quieres volver a jugar da Click en reiniciar')
+    } else if(vidaEnemigo == 0){
+        mensajeFinal('FELICIDADES! Ganaste la batalla😄, si quieres volver a jugar da Click en reiniciar')
+    }
+}
+
+function mensajeFinal(resultadoFinal){
     let seccionMensaje = document.getElementById('mensajes') 
 
     let parrafo = document.createElement('p')
+    parrafo.innerHTML = resultadoFinal
 
-    if (vidaJugador == 0) {
-        parrafo.innerHTML = 'Perdiste la batalla😢, si quieres volver a jugar da Click en reiniciar'
-    } else if(vidaEnemigo == 0){
-        parrafo.innerHTML = 'FELICIDADES! Ganaste la batalla😄, si quieres volver a jugar da Click en reiniciar'
-    }
     seccionMensaje.appendChild(parrafo)
+
+    let botonFuego = document.getElementById('boton-fuego')
+    botonFuego.disabled = true
+    let botonAgua = document.getElementById('boton-agua')
+    botonAgua.disabled = true 
+    let botonPlanta = document.getElementById('boton-planta')
+    botonPlanta.disabled = true
 
 }
 
@@ -131,6 +143,10 @@ function crearMensaje(resultado){
     ', Tu contrincante ataco con ' + ataqueEnemigo + resultado
 
     seccionMensaje.appendChild(parrafo)
+}
+
+function reiniciar(){
+    location.reload()
 }
 
 window.addEventListener('load', iniciarJuego)
