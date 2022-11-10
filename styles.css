@@ -1,26 +1,65 @@
 h1 {
-    color: lightskyblue;
-    width: 300px;
-    height: 50px;
-    background-color: salmon;
+    color: lightgoldenrodyellow;
+    width: 600px;
+    height: 100px;
+    background-color: rgb(35, 10, 175);
+    padding: 10px;
+    font-size: xxx-large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+#head {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-label {
+#seleccionar-mascota {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: powderblue;
     width: 300px;
-    height: 50px;
-    background-color: tomato;
+    height: 400px;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-inline: auto;
+    border-radius: 10px;
 }
 
-input {
-    width: 300px;
-    height: 50px;
-    background-color: yellow;
+.mascota {
+    font-size: xx-large;
 }
 
-button {
-    width: 300px;
-    height: 50px;
-    background-color: aqua;
+.tarjeta-moquepon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 25px;
+    background-color: orange;
+    font-size: x-large;
+    margin: 5px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-inline: auto;
+} 
+
+#boton-mascota {
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+    font-size: medium;
+    width: 150px;
+    height: 25px;
+    background-color: lightgoldenrodyellow;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 20px;
 }
 .mascota {
     color: coral;
