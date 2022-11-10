@@ -1,20 +1,22 @@
-h1 {
-    color: lightgoldenrodyellow;
-    width: 600px;
-    height: 100px;
-    background-color: rgb(35, 10, 175);
-    padding: 10px;
-    font-size: xxx-large;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+body {
+    font-family: 'Fredoka One', cursive;
+    background-color: #E14D2A;
+
 }
-#head {
+
+input {
+    display: none;
+}
+
+.titulo {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    color: white;
+    font-size: 60px;
 }
 
 #seleccionar-mascota {
@@ -22,42 +24,54 @@ h1 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: powderblue;
-    width: 300px;
+    background-color: #FD841F;
+    width: 800px;
     height: 400px;
     padding: 10px;
     box-sizing: border-box;
     margin-inline: auto;
-    border-radius: 10px;
+    border-radius: 40px;
 }
 
-.mascota {
-    font-size: xx-large;
+.subtitulo {
+    font-size: 43px;
+    color: white;
 }
 
-.tarjeta-moquepon{
+.tarjetas {
+    display: flex;
+    gap: 10px;
+}
+.tarjeta-mokepon{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50%;
-    height: 25px;
-    background-color: orange;
+    width: 200px;
+    height: 200px;
+    background-color: #3E6D9C;
     font-size: x-large;
-    margin: 5px;
-    border-radius: 5px;
+    border-radius: 20px;
     box-sizing: border-box;
-    margin-inline: auto;
+    border: 1px solid white;
+    flex-direction: column;
+    padding: 10px;
 } 
+
+.tarjeta-mokepon img {
+    width: 120px;
+}
 
 #boton-mascota {
     display: flex;
     justify-content: center;
     align-items: center;  
+    color: lightgoldenrodyellow;
     font-size: medium;
     width: 150px;
     height: 25px;
-    background-color: lightgoldenrodyellow;
+    background-color: #001253;
     border-radius: 5px;
+    border: 1px solid white;
     padding: 5px;
     margin: 20px;
 }
