@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@300&display=swap');
 
 body {
-    font-family: 'Fredoka One', cursive;
+    font-family: 'Poppins', sans-serif;
     background-color: #E14D2A;
 
 }
@@ -11,6 +11,7 @@ input {
 }
 
 .titulo {
+    font-family: 'Fredoka One', cursive;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -26,11 +27,11 @@ input {
     align-items: center;
     background-color: #FD841F;
     width: 800px;
-    height: 400px;
+    height: 800px;
     padding: 10px;
     box-sizing: border-box;
     margin-inline: auto;
-    border-radius: 40px;
+    border-radius: 400px;
 }
 
 .subtitulo {
@@ -43,6 +44,7 @@ input {
     gap: 10px;
 }
 .tarjeta-mokepon{
+    font-family: 'Fredoka One', cursive;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -62,18 +64,19 @@ input {
 }
 
 #boton-mascota {
+    font-family: 'Poppins', sans-serif;
+    color: white;
     display: flex;
     justify-content: center;
-    align-items: center;  
-    color: lightgoldenrodyellow;
+    align-items: center;
     font-size: medium;
-    width: 150px;
-    height: 25px;
+    width: 180px;
+    height: 45px;
     background-color: #001253;
     border-radius: 5px;
-    border: 1px solid white;
+    border: 2px solid white;
     padding: 5px;
-    margin: 20px;
+    margin-top: 100px;
 }
 .mascota {
     color: coral;
