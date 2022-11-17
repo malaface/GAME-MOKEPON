@@ -104,15 +104,15 @@ function combate(){
     let spanVidaEmemigo = document.getElementById('vida-enemigo')
 
     if (ataqueJugador == ataqueEnemigo){
-        crearMensaje(', EMPATE!')
+        crearMensaje('EMPATE!')
     }
     else if ((ataqueJugador == 'Fuego 🔥' && ataqueEnemigo == 'Planta 🌱')||(ataqueJugador == 'Agua 🌊' && ataqueEnemigo == 'Fuego 🔥')||(ataqueJugador == 'Planta 🌱' && ataqueEnemigo == 'Agua 🌊')) {
         vidaEnemigo--
-        crearMensaje(', GANASTE!')
+        crearMensaje('GANASTE!')
         spanVidaEmemigo.innerHTML = vidaEnemigo
     } else {
         vidaJugador--
-        crearMensaje(', PERDISTE!')
+        crearMensaje('PERDISTE!')
         spanVidaJugador.innerHTML =  vidaJugador
     }
     revisarVidas()
@@ -130,12 +130,9 @@ function mensajeFinal(resultadoFinal){
     let sectionReiniciar = document.getElementById('reiniciar')
     sectionReiniciar.style.display = 'block'
 
-    let seccionMensaje = document.getElementById('mensajes') 
+    let seccionMensaje = document.getElementById('resultado') 
 
-    let parrafo = document.createElement('p')
-    parrafo.innerHTML = resultadoFinal
-
-    seccionMensaje.appendChild(parrafo)
+    seccionMensaje.innerHTML = resultadoFinal
 
     let botonFuego = document.getElementById('boton-fuego')
     botonFuego.disabled = true
@@ -149,14 +146,19 @@ function mensajeFinal(resultadoFinal){
 // creatElement nos permite crear cualquier tipo de texto HTML desde Javascript.
 // appendChield nos permite agregar ese texto en una seccion especifica de nuestra pagina
 function crearMensaje(resultado){
-    let seccionMensaje = document.getElementById('mensajes') 
+    let seccionMensaje = document.getElementById('resultado') 
+    let divAtaquesDelJugador = document.getElementById('ataques-del-jugador') 
+    let divAtaquesDelEnemigo = document.getElementById('ataques-del-enemigo') 
 
-    let parrafo = document.createElement('p')
+    let nuevoAtaqueDelJugador = document.createElement('p') 
+    let nuevoAtaqueDelEnemigo = document.createElement('p')
 
-    parrafo.innerHTML = 'Tu mascota ataco con ' + ataqueJugador + 
-    ', Tu contrincante ataco con ' + ataqueEnemigo + resultado
+    seccionMensaje.innerHTML = resultado
+    nuevoAtaqueDelJugador.innerHTML = ataqueJugador
+    nuevoAtaqueDelEnemigo.innerHTML = ataqueEnemigo
 
-    seccionMensaje.appendChild(parrafo)
+    divAtaquesDelJugador.appendChild(nuevoAtaqueDelJugador)
+    divAtaquesDelEnemigo.appendChild(nuevoAtaqueDelEnemigo)
 }
 
 function reiniciar(){
