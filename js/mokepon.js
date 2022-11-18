@@ -1,27 +1,40 @@
 // Las variables glogales de crean sin ningun valor preasignado
+const sectionReiniciar = document.getElementById('reiniciar')
+const sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
+const botonMascotaJugador = document.getElementById('boton-mascota')
+const botonReiniciar = document.getElementById('boton-reiniciar')
+
+const inputHipodoge = document.getElementById('hipodoge')
+const inputCapipepo = document.getElementById('capipepo')
+const inputRatigueya = document.getElementById('ratigueya') 
+const spanMascotaJugador = document.getElementById('mascota-jugador')
+
+const sectionSeleccionarMascota = document.getElementById('seleccionar-mascota')
+const spanMascotaEnemigo = document.getElementById('mascota-enemigo')
+const botonFuego = document.getElementById('boton-fuego')
+const botonAgua = document.getElementById('boton-agua')
+const botonPlanta = document.getElementById('boton-planta')
+
+const spanVidaJugador = document.getElementById('vida-jugador')
+const spanVidaEmemigo = document.getElementById('vida-enemigo')
+
+const seccionMensaje = document.getElementById('resultado') 
+const divAtaquesDelJugador = document.getElementById('ataques-del-jugador') 
+const divAtaquesDelEnemigo = document.getElementById('ataques-del-enemigo') 
+
 let ataqueJugador
 let ataqueEnemigo 
 let vidaJugador = 3
 let vidaEnemigo = 3
 
 function iniciarJuego() {
-    let sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
     sectionSeleccionarAtaque.style.display = 'none'
-    let sectionReiniciar = document.getElementById('reiniciar')
     sectionReiniciar.style.display = 'none'
-
-    let botonMascotaJugador = document.getElementById('boton-mascota')
     botonMascotaJugador.addEventListener('click', seleccionarMascotaJugador)
-
-    let botonReiniciar = document.getElementById('boton-reiniciar')
     botonReiniciar.addEventListener('click', reiniciar)
 }
 
 function seleccionarMascotaJugador(){
-    let inputHipodoge = document.getElementById('hipodoge')
-    let inputCapipepo = document.getElementById('capipepo')
-    let inputRatigueya = document.getElementById('ratigueya') 
-    let spanMascotaJugador = document.getElementById('mascota-jugador')
     let jugar = 1
 
     if (inputHipodoge.checked) {
@@ -32,8 +45,7 @@ function seleccionarMascotaJugador(){
         spanMascotaJugador.innerHTML = 'Ratigueya'
     } else {
         jugar = 0
-        alert('Tienes que seleccionar un MOKEPON!')
-       
+        alert('Tienes que seleccionar un MOKEPON!')      
     }
     if (jugar == 1){
         seleccionarMascotaEnemigo()
@@ -45,20 +57,13 @@ function aleatorio(min, max){
 }
 
 function seleccionarMascotaEnemigo(){
-    let sectionSeleccionarMascota = document.getElementById('seleccionar-mascota')
     sectionSeleccionarMascota.style.display = 'none'
-
-    let sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
     sectionSeleccionarAtaque.style.display = 'flex'
 
     let mascotaAleatorio = aleatorio(1,3)
-    let spanMascotaEnemigo = document.getElementById('mascota-enemigo')
 
-    let botonFuego = document.getElementById('boton-fuego')
     botonFuego.addEventListener('click', ataqueFuego)
-    let botonAgua = document.getElementById('boton-agua')
     botonAgua.addEventListener('click', ataqueAgua) 
-    let botonPlanta = document.getElementById('boton-planta')
     botonPlanta.addEventListener('click', ataquePlanta)
     
     if (mascotaAleatorio == 1) {
@@ -99,9 +104,6 @@ function seleccionarAtaqueEnemigo(){
 }
 
 function combate(){
-    
-    let spanVidaJugador = document.getElementById('vida-jugador')
-    let spanVidaEmemigo = document.getElementById('vida-enemigo')
 
     if (ataqueJugador == ataqueEnemigo){
         crearMensaje('EMPATE!')
@@ -127,29 +129,16 @@ function revisarVidas() {
 }
 
 function mensajeFinal(resultadoFinal){
-    let sectionReiniciar = document.getElementById('reiniciar')
     sectionReiniciar.style.display = 'block'
-
-    let seccionMensaje = document.getElementById('resultado') 
-
     seccionMensaje.innerHTML = resultadoFinal
-
-    let botonFuego = document.getElementById('boton-fuego')
     botonFuego.disabled = true
-    let botonAgua = document.getElementById('boton-agua')
-    botonAgua.disabled = true 
-    let botonPlanta = document.getElementById('boton-planta')
     botonPlanta.disabled = true
-
+    botonAgua.disabled = true 
 }
 
 // creatElement nos permite crear cualquier tipo de texto HTML desde Javascript.
 // appendChield nos permite agregar ese texto en una seccion especifica de nuestra pagina
 function crearMensaje(resultado){
-    let seccionMensaje = document.getElementById('resultado') 
-    let divAtaquesDelJugador = document.getElementById('ataques-del-jugador') 
-    let divAtaquesDelEnemigo = document.getElementById('ataques-del-enemigo') 
-
     let nuevoAtaqueDelJugador = document.createElement('p') 
     let nuevoAtaqueDelEnemigo = document.createElement('p')
 
