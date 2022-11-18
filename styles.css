@@ -10,6 +10,10 @@ input {
     display: none;
 }
 
+input:checked + label{
+    background-color: #E14D2A;
+}
+
 .titulo {
     font-family: 'Fredoka One', cursive;
     display: flex;
