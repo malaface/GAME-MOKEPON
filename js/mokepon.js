@@ -22,6 +22,7 @@ const seccionMensaje = document.getElementById('resultado')
 const divAtaquesDelJugador = document.getElementById('ataques-del-jugador') 
 const divAtaquesDelEnemigo = document.getElementById('ataques-del-enemigo') 
 
+let mokepones = []
 let ataqueJugador
 let ataqueEnemigo 
 let vidaJugador = 3
@@ -43,6 +44,10 @@ let capipepo = new Mokepon('Capipepo',
 
 let ratigueya = new Mokepon('Ratigueya', 
 './css/Assets/mokepons_mokepon_ratigueya_attack.png', 5)
+
+mokepones.push(hipodoge, capipepo, ratigueya)
+
+console.log(mokepones)
 
 function iniciarJuego() {
     sectionSeleccionarAtaque.style.display = 'none'
