@@ -29,10 +29,11 @@ let vidaJugador = 3
 let vidaEnemigo = 3
 
 class Mokepon {
-    constructor(nombre, foto, vida, ) {
+    constructor(nombre, foto, vida) {
         this.nombre = nombre
         this.foto = foto
         this.vida = vida
+        this.ataques = []
     }
 }
 
@@ -45,9 +46,29 @@ let capipepo = new Mokepon('Capipepo',
 let ratigueya = new Mokepon('Ratigueya', 
 './css/Assets/mokepons_mokepon_ratigueya_attack.png', 5)
 
-mokepones.push(hipodoge, capipepo, ratigueya)
+hipodoge.ataques.push(
+    { nombre: '💧', Id: 'boton-agua'},
+    { nombre: '💧', Id: 'boton-agua'},
+    { nombre: '💧', Id: 'boton-agua'},
+    { nombre: '🔥', Id: 'boton-fuego'},
+    { nombre: '🌱', Id: 'boton-planta'},
+)
 
-console.log(mokepones)
+capipepo.ataques.push(
+    { nombre: '🌱', Id: 'boton-planta'},
+    { nombre: '🌱', Id: 'boton-planta'},
+    { nombre: '🌱', Id: 'boton-planta'},
+    { nombre: '💧', Id: 'boton-agua'},
+    { nombre: '🔥', Id: 'boton-fuego'},
+)
+
+ratigueya.ataques.push(
+    { nombre: '🔥', Id: 'boton-fuego'},
+    { nombre: '🔥', Id: 'boton-fuego'},
+    { nombre: '🔥', Id: 'boton-fuego'},
+    { nombre: '💧', Id: 'boton-agua'},
+    { nombre: '🌱', Id: 'boton-planta'},
+)
 
 function iniciarJuego() {
     sectionSeleccionarAtaque.style.display = 'none'
