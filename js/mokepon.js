@@ -4,9 +4,9 @@ const sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
 const botonMascotaJugador = document.getElementById('boton-mascota')
 const botonReiniciar = document.getElementById('boton-reiniciar')
 
-const inputHipodoge = document.getElementById('hipodoge')
-const inputCapipepo = document.getElementById('capipepo')
-const inputRatigueya = document.getElementById('ratigueya') 
+let inputHipodoge = document.getElementById('Hipodoge')
+const inputCapipepo = document.getElementById('Capipepo')
+const inputRatigueya = document.getElementById('Ratigueya') 
 const spanMascotaJugador = document.getElementById('mascota-jugador')
 
 const sectionSeleccionarMascota = document.getElementById('seleccionar-mascota')
@@ -21,8 +21,10 @@ const spanVidaEmemigo = document.getElementById('vida-enemigo')
 const seccionMensaje = document.getElementById('resultado') 
 const divAtaquesDelJugador = document.getElementById('ataques-del-jugador') 
 const divAtaquesDelEnemigo = document.getElementById('ataques-del-enemigo') 
+const contenedorTarjetas = document.getElementById('contenedor-tarjetas')
 
 let mokepones = []
+let opcionMokepones
 let ataqueJugador
 let ataqueEnemigo 
 let vidaJugador = 3
@@ -70,11 +72,25 @@ ratigueya.ataques.push(
     { nombre: '🌱', Id: 'boton-planta'},
 )
 
+mokepones.push(hipodoge, capipepo, ratigueya)
+
 function iniciarJuego() {
     sectionSeleccionarAtaque.style.display = 'none'
     sectionReiniciar.style.display = 'none'
     botonMascotaJugador.addEventListener('click', seleccionarMascotaJugador)
     botonReiniciar.addEventListener('click', reiniciar)
+
+    mokepones.forEach((mokepon) => {
+        opcionMokepones = `
+        <input type="radio" name="mascota" id=${mokepon.nombre} />
+        <label class="tarjeta-mokepon" for=${mokepon.nombre}>
+           <p>${mokepon.nombre}</p>
+           <img src=${mokepon.foto} alt=${mokepon.nombre}>
+       </label>
+        `
+        contenedorTarjetas.innerHTML += opcionMokepones
+    })
+
 }
 
 function seleccionarMascotaJugador(){
