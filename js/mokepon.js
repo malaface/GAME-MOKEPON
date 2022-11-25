@@ -123,19 +123,14 @@ function seleccionarMascotaEnemigo(){
     sectionSeleccionarMascota.style.display = 'none'
     sectionSeleccionarAtaque.style.display = 'flex'
 
-    let mascotaAleatorio = aleatorio(1,3)
+    let mascotaAleatorio = aleatorio(0, mokepones.length - 1)
 
     botonFuego.addEventListener('click', ataqueFuego)
     botonAgua.addEventListener('click', ataqueAgua) 
     botonPlanta.addEventListener('click', ataquePlanta)
     
-    if (mascotaAleatorio == 1) {
-        spanMascotaEnemigo.innerHTML = 'Hipodoge'
-    } else if (mascotaAleatorio == 2){
-        spanMascotaEnemigo.innerHTML = 'Capipepo'
-    } else {
-        spanMascotaEnemigo.innerHTML = 'Ratigueya'
-    }
+    spanMascotaEnemigo.innerHTML = mokepones[mascotaAleatorio].nombre
+
 }
 
 function ataqueFuego(){
