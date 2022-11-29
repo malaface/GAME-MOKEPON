@@ -135,16 +135,18 @@ function extraerAtaques(mascotaJugador) {
 
 function mostrarAtaques(ataque) {
     ataque.forEach( (ataques) => {
-        opcionAtaques = `
+        botonAtaque = `
         <button id=${ataques.Id}
         class="boton-ataque">${ataques.nombre} </button>
         `
-        contenedorAtaques.innerHTML += opcionAtaques
+        contenedorAtaques.innerHTML += botonAtaque
 
-        botonFuego = document.getElementById('boton-fuego')
-        botonAgua = document.getElementById('boton-agua')
-        botonPlanta = document.getElementById('boton-planta')
-    });
+    })
+    botonFuego = document.getElementById('boton-fuego')
+    botonAgua = document.getElementById('boton-agua')
+    botonPlanta = document.getElementById('boton-planta')
+
+    
 }
 
 function aleatorio(min, max){
