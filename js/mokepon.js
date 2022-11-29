@@ -20,8 +20,8 @@ const contenedorAtaques = document.getElementById('contenedor-ataques')
 
 let mokepones = []
 let opcionMokepones
-let ataqueJugador
-let ataqueEnemigo 
+let ataqueJugador = []
+let ataqueEnemigo
 let inputHipodoge
 let inputCapipepo
 let inputRatigueya
@@ -30,6 +30,7 @@ let botonAtaque
 let botonFuego
 let botonAgua
 let botonPlanta 
+let botones = []
 let vidaJugador = 3
 let vidaEnemigo = 3
 
@@ -137,7 +138,7 @@ function mostrarAtaques(ataque) {
     ataque.forEach( (ataques) => {
         botonAtaque = `
         <button id=${ataques.Id}
-        class="boton-ataque">${ataques.nombre} </button>
+        class="boton-ataque BAtaque">${ataques.nombre} </button>
         `
         contenedorAtaques.innerHTML += botonAtaque
 
@@ -145,12 +146,8 @@ function mostrarAtaques(ataque) {
     botonFuego = document.getElementById('boton-fuego')
     botonAgua = document.getElementById('boton-agua')
     botonPlanta = document.getElementById('boton-planta')
-
+    botones = document.querySelectorAll('.BAtaque')
     
-}
-
-function aleatorio(min, max){
-    return Math.floor(Math.random()*(max-min+1)+min)
 }
 
 function seleccionarMascotaEnemigo(){
@@ -158,28 +155,35 @@ function seleccionarMascotaEnemigo(){
     sectionSeleccionarAtaque.style.display = 'flex'
 
     let mascotaAleatorio = aleatorio(0, mokepones.length - 1)
-
-    botonFuego.addEventListener('click', ataqueFuego)
-    botonAgua.addEventListener('click', ataqueAgua) 
-    botonPlanta.addEventListener('click', ataquePlanta)
     
     spanMascotaEnemigo.innerHTML = mokepones[mascotaAleatorio].nombre
 
+    secuenciaAtaque()
 }
 
-function ataqueFuego(){
-    ataqueJugador = 'Fuego 🔥'
+function secuenciaAtaque() {
+    botones.forEach((boton) =>{
+        boton.addEventListener('click', (e) => {
+            if (e.target.textContent == '🔥 ') {
+                ataqueJugador.push('Fuego')
+                console.log(ataqueJugador)
+                boton.style.background = '#112f58'
+            } else if (e.target.textContent == '💧 ') {
+                ataqueJugador.push('Agua')
+                console.log(ataqueJugador)
+                boton.style.background = '#112f58'    
+            } else if (e.target.textContent == '🌱 ') {
+                ataqueJugador.push('Planta')
+                console.log(ataqueJugador)
+                boton.style.background = '#112f58' 
+            }
+        })
+    })
     seleccionarAtaqueEnemigo()
 }
 
-function ataqueAgua(){
-    ataqueJugador = 'Agua 🌊'
-    seleccionarAtaqueEnemigo()
-}
-
-function ataquePlanta(){
-    ataqueJugador = 'Planta 🌱'
-    seleccionarAtaqueEnemigo()
+function aleatorio(min, max){
+    return Math.floor(Math.random()*(max-min+1)+min)
 }
 
 function seleccionarAtaqueEnemigo(){
