@@ -34,8 +34,10 @@ let ataquesMokeponEnemigo
 let botones = []
 let indexAtaqueJugador
 let indexAtaqueEnemigo
-let vidaJugador = 3
-let vidaEnemigo = 3
+let victoriasJugador = 0
+let victoriasEnemigo = 0
+let vidaJugador = 5
+let vidaEnemigo = 5
 
 class Mokepon {
     constructor(nombre, foto, vida) {
@@ -224,24 +226,29 @@ function combate(){
         (ataqueJugador[i] == 'Planta' && ataqueEnemigo[i] == 'Agua') ||
         (ataqueJugador[i] == 'Agua' && ataqueEnemigo[i] == 'Fuego')) {
             indexAmbosAtaques(i, i)
-            crearMensaje('GANASTE!')           
+            crearMensaje('GANASTE!') 
+            victoriasJugador++
+            spanVidaJugador.innerHTML = victoriasJugador
         } else if ((ataqueJugador[i] == 'Fuego' && ataqueEnemigo[i] == 'Agua') ||
         (ataqueJugador[i] == 'Planta' && ataqueEnemigo[i] == 'Fuego') ||
         (ataqueJugador[i] == 'Agua' && ataqueEnemigo[i] == 'Planta')) {
             indexAmbosAtaques(i, i)
-            crearMensaje('PERDISTE!')        
+            crearMensaje('PERDISTE!')    
+            victoriasEnemigo++
+            spanVidaEmemigo.innerHTML = victoriasEnemigo
         }
     }
 
-    revisarVidas()
+    revisarVictorias()
 }
 
-function revisarVidas() {
-    if (vidaJugador == 0) {
-        mensajeFinal('Perdiste la batalla😢, si quieres volver a jugar da Click en reiniciar')
-    } else if(vidaEnemigo == 0){
+function revisarVictorias() {
+    if (victoriasJugador == victoriasEnemigo) {
+        mensajeFinal('Que reñido, esto fue un Empate!')
+    } else if(victoriasJugador > victoriasEnemigo){
         mensajeFinal('FELICIDADES! Ganaste la batalla😄, si quieres volver a jugar da Click en reiniciar')
-    }
+    } else 
+    mensajeFinal('Lo siento Perdiste!😓')
 }
 
 function mensajeFinal(resultadoFinal){
