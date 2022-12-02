@@ -18,6 +18,9 @@ const divAtaquesDelEnemigo = document.getElementById('ataques-del-enemigo')
 const contenedorTarjetas = document.getElementById('contenedor-tarjetas')
 const contenedorAtaques = document.getElementById('contenedor-ataques')
 
+const sectionVerMapa = document.getElementById('ver-mapa')
+const mapa = document.getElementById('mapa')
+
 let mokepones = []
 let opcionMokepones
 let ataqueJugador = []
@@ -42,6 +45,7 @@ let victoriasJugador = 0
 let victoriasEnemigo = 0
 let vidaJugador = 5
 let vidaEnemigo = 5
+let lienzo = mapa.getContext('2d')
 
 class Mokepon {
     constructor(nombre, foto, vida, tipo) {
@@ -124,6 +128,8 @@ mokepones.push(hipodoge, capipepo, ratigueya, langostelvis, pydos, tucapalma)
 function iniciarJuego() {
     sectionSeleccionarAtaque.style.display = 'none'
     sectionReiniciar.style.display = 'none'
+    sectionVerMapa.style.display = 'none'
+
     botonMascotaJugador.addEventListener('click', seleccionarMascotaJugador)
     botonReiniciar.addEventListener('click', reiniciar)
 
@@ -204,7 +210,14 @@ function mostrarAtaques(ataque) {
 
 function seleccionarMascotaEnemigo(){
     sectionSeleccionarMascota.style.display = 'none'
-    sectionSeleccionarAtaque.style.display = 'flex'
+    //sectionSeleccionarAtaque.style.display = 'flex'
+    sectionVerMapa.style.display = 'flex'
+    let imagenMokepon = new Image()
+    imagenMokepon.src = capipepo.foto
+    lienzo.drawImage(
+        imagenMokepon,
+        20, 40, 100, 100
+    )
 
     mascotaAleatorio = aleatorio(0, mokepones.length - 1)
     
@@ -216,7 +229,7 @@ function seleccionarMascotaEnemigo(){
     (mascotaJugador.tipo == 'Planta' && mascotaAleatorio.tipo == 'Agua')) {
         victoriasJugador++
     } else
-        victoriasEnemigo++
+        victoriasEnemigo++  
 
     secuenciaAtaque()
 }
