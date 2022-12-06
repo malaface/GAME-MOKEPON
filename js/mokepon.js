@@ -53,20 +53,29 @@ let mapaBackground = new Image()
 mapaBackground.src = './css/Assets/mokemap.png'
 
 class Mokepon {
-    constructor(nombre, foto, vida, tipo) {
+    constructor(nombre, foto, vida, tipo, x = 10, y = 10) {
         this.nombre = nombre
         this.foto = foto
         this.vida = vida
         this.tipo = tipo
         this.ataques = []
-        this.x = 20
-        this.y = 30
+        this.x = aleatorio(0,300)
+        this.y = aleatorio(0,220)
         this.ancho = 80
         this.alto = 80
         this.mapaFoto = new Image()
         this.mapaFoto.src = foto
         this.velocidadX = 0
         this.velocidadY = 0
+    }
+    pintaMokepon() {
+        lienzo.drawImage(
+            this.mapaFoto,
+            this.x, 
+            this.y,
+            this.ancho,
+            this.alto
+        )
     }
 }
 
@@ -86,6 +95,24 @@ let pydos = new Mokepon('Pydos',
 './css/Assets/mokepons_mokepon_pydos_attack.png', 5, 'Agua')
 
 let tucapalma = new Mokepon('Tucapalma', 
+'./css/Assets/mokepons_mokepon_tucapalma_attack.png', 5, 'Planta')
+
+let hipodogeEnemigo = new Mokepon('Hipodoge', 
+'./css/Assets/mokepons_mokepon_hipodoge_attack.png', 5, 'Agua')
+
+let capipepoEnemigo = new Mokepon('Capipepo', 
+'./css/Assets/mokepons_mokepon_capipepo_attack.png', 5, 'Planta')
+
+let ratigueyaEnemigo = new Mokepon('Ratigueya', 
+'./css/Assets/mokepons_mokepon_ratigueya_attack.png', 5, 'Fuego')
+
+let langostelvisEnemigo = new Mokepon('Langostelvis', 
+'./css/Assets/mokepons_mokepon_langostelvis_attack.png', 5, 'Fuego')
+
+let pydosEnemigo = new Mokepon('Pydos', 
+'./css/Assets/mokepons_mokepon_pydos_attack.png', 5, 'Agua')
+
+let tucapalmaEnemigo = new Mokepon('Tucapalma', 
 './css/Assets/mokepons_mokepon_tucapalma_attack.png', 5, 'Planta')
 
 hipodoge.ataques.push(
@@ -366,13 +393,13 @@ function pintarCanvas() {
         mapa.width,
         mapa.height
     )
-    lienzo.drawImage(
-        mascotaJugadorObjeto.mapaFoto,
-        mascotaJugadorObjeto.x, 
-        mascotaJugadorObjeto.y,
-        mascotaJugadorObjeto.ancho,
-        mascotaJugadorObjeto.alto
-    )
+        mascotaJugadorObjeto.pintaMokepon()
+        capipepoEnemigo.pintaMokepon()
+        hipodogeEnemigo.pintaMokepon()
+        ratigueyaEnemigo.pintaMokepon()
+        langostelvisEnemigo.pintaMokepon()
+        pydosEnemigo.pintaMokepon()
+        tucapalmaEnemigo.pintaMokepon()
 }
 
 function iniciarMapa() {
