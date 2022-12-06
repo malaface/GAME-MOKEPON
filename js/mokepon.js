@@ -228,7 +228,8 @@ function seleccionarMascotaEnemigo(){
     sectionSeleccionarMascota.style.display = 'none'
     //sectionSeleccionarAtaque.style.display = 'flex'
     sectionVerMapa.style.display = 'flex'
-    intervalo = setInterval( pintarPersonaje, 50)
+
+    iniciarMapa()
 
     mascotaAleatorio = aleatorio(0, mokepones.length - 1)
     
@@ -370,6 +371,13 @@ function pintarPersonaje() {
     )
 }
 
+function iniciarMapa() {
+    intervalo = setInterval( pintarPersonaje, 50)
+
+    window.addEventListener('keydown', sePresionoTecla)
+    window.addEventListener('keyup', detenerMovimimiento)
+}
+
 function moverMokeponRight() {
     capipepo.velocidadX = 5
 }
@@ -389,6 +397,25 @@ function moverMokeponDown() {
 function detenerMovimimiento() {
     capipepo.velocidadX = 0
     capipepo.velocidadY = 0
+}
+
+function sePresionoTecla(event) {
+    switch (event.key) {
+        case 'ArrowUp':
+            moverMokeponUp()
+            break;
+        case 'ArrowDown' :
+            moverMokeponDown()
+            break;
+        case 'ArrowRight' :
+            moverMokeponRight()
+            break;
+        case 'ArrowLeft' :
+            moverMokeponLeft()
+            break
+        default:
+            break;
+    }
 }
 
 window.addEventListener('load', iniciarJuego)
