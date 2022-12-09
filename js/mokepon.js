@@ -53,14 +53,14 @@ let mapaBackground = new Image()
 mapaBackground.src = './css/Assets/mokemap.png'
 
 class Mokepon {
-    constructor(nombre, foto, vida, tipo, x = 10, y = 10) {
+    constructor(nombre, foto, vida, tipo, x = aleatorio(0,400), y = aleatorio(0,320)) {
         this.nombre = nombre
         this.foto = foto
         this.vida = vida
         this.tipo = tipo
         this.ataques = []
-        this.x = aleatorio(0,400)
-        this.y = aleatorio(0,320)
+        this.x = x
+        this.y = y
         this.ancho = 60
         this.alto = 60
         this.mapaFoto = new Image()
@@ -80,22 +80,22 @@ class Mokepon {
 }
 
 let hipodoge = new Mokepon('Hipodoge', 
-'./css/Assets/mokepons_mokepon_hipodoge_attack.png', 5, 'Agua')
+'./css/Assets/mokepons_mokepon_hipodoge_attack.png', 5, 'Agua', 10, 10)
 
 let capipepo = new Mokepon('Capipepo', 
-'./css/Assets/mokepons_mokepon_capipepo_attack.png', 5, 'Planta')
+'./css/Assets/mokepons_mokepon_capipepo_attack.png', 5, 'Planta', 10, 10)
 
 let ratigueya = new Mokepon('Ratigueya', 
-'./css/Assets/mokepons_mokepon_ratigueya_attack.png', 5, 'Fuego')
+'./css/Assets/mokepons_mokepon_ratigueya_attack.png', 5, 'Fuego', 10, 10)
 
 let langostelvis = new Mokepon('Langostelvis', 
-'./css/Assets/mokepons_mokepon_langostelvis_attack.png', 5, 'Fuego')
+'./css/Assets/mokepons_mokepon_langostelvis_attack.png', 5, 'Fuego', 10, 10)
 
 let pydos = new Mokepon('Pydos', 
-'./css/Assets/mokepons_mokepon_pydos_attack.png', 5, 'Agua')
+'./css/Assets/mokepons_mokepon_pydos_attack.png', 5, 'Agua', 10, 10)
 
 let tucapalma = new Mokepon('Tucapalma', 
-'./css/Assets/mokepons_mokepon_tucapalma_attack.png', 5, 'Planta')
+'./css/Assets/mokepons_mokepon_tucapalma_attack.png', 5, 'Planta', 10, 10)
 
 let hipodogeEnemigo = new Mokepon('Hipodoge', 
 './css/Assets/mokepons_mokepon_hipodoge_attack.png', 5, 'Agua')
@@ -123,7 +123,23 @@ hipodoge.ataques.push(
     { nombre: '🌱', Id: 'boton-planta'},
 )
 
+hipodogeEnemigo.ataques.push(
+    { nombre: '💧', Id: 'boton-agua'},
+    { nombre: '💧', Id: 'boton-agua'},
+    { nombre: '💧', Id: 'boton-agua'},
+    { nombre: '🔥', Id: 'boton-fuego'},
+    { nombre: '🌱', Id: 'boton-planta'},
+)
+
 capipepo.ataques.push(
+    { nombre: '🌱', Id: 'boton-planta'},
+    { nombre: '🌱', Id: 'boton-planta'},
+    { nombre: '🌱', Id: 'boton-planta'},
+    { nombre: '💧', Id: 'boton-agua'},
+    { nombre: '🔥', Id: 'boton-fuego'},
+)
+
+capipepoEnemigo.ataques.push(
     { nombre: '🌱', Id: 'boton-planta'},
     { nombre: '🌱', Id: 'boton-planta'},
     { nombre: '🌱', Id: 'boton-planta'},
@@ -139,7 +155,23 @@ ratigueya.ataques.push(
     { nombre: '🌱', Id: 'boton-planta'},
 )
 
+ratigueyaEnemigo.ataques.push(
+    { nombre: '🔥', Id: 'boton-fuego'},
+    { nombre: '🔥', Id: 'boton-fuego'},
+    { nombre: '🔥', Id: 'boton-fuego'},
+    { nombre: '💧', Id: 'boton-agua'},
+    { nombre: '🌱', Id: 'boton-planta'},
+)
+
 langostelvis.ataques.push(
+    { nombre: '💧', Id: 'boton-agua'},
+    { nombre: '💧', Id: 'boton-agua'},
+    { nombre: '🔥', Id: 'boton-fuego'},
+    { nombre: '🔥', Id: 'boton-fuego'},
+    { nombre: '🔥', Id: 'boton-fuego'},
+)
+
+langostelvisEnemigo.ataques.push(
     { nombre: '💧', Id: 'boton-agua'},
     { nombre: '💧', Id: 'boton-agua'},
     { nombre: '🔥', Id: 'boton-fuego'},
@@ -155,7 +187,23 @@ pydos.ataques.push(
     { nombre: '🌱', Id: 'boton-planta'},
 )
 
+pydosEnemigo.ataques.push(
+    { nombre: '💧', Id: 'boton-agua'},
+    { nombre: '💧', Id: 'boton-agua'},
+    { nombre: '💧', Id: 'boton-agua'},
+    { nombre: '🌱', Id: 'boton-planta'},
+    { nombre: '🌱', Id: 'boton-planta'},
+)
+
 tucapalma.ataques.push(
+    { nombre: '💧', Id: 'boton-agua'},
+    { nombre: '💧', Id: 'boton-agua'},
+    { nombre: '🌱', Id: 'boton-planta'},
+    { nombre: '🌱', Id: 'boton-planta'},
+    { nombre: '🌱', Id: 'boton-planta'},
+)
+
+tucapalmaEnemigo.ataques.push(
     { nombre: '💧', Id: 'boton-agua'},
     { nombre: '💧', Id: 'boton-agua'},
     { nombre: '🌱', Id: 'boton-planta'},
@@ -223,7 +271,7 @@ function seleccionarMascotaJugador(){
         extraerAtaques(mascotaJugador)
         sectionVerMapa.style.display = 'flex'
         iniciarMapa()
-        seleccionarMascotaEnemigo()
+
     }
 }
 
@@ -250,13 +298,10 @@ function mostrarAtaques(ataque) {
     
 }
 
-function seleccionarMascotaEnemigo(){
-    sectionSeleccionarMascota.style.display = 'none'
-    //sectionSeleccionarAtaque.style.display = 'flex'
-    mascotaAleatorio = aleatorio(0, mokepones.length - 1)
+function seleccionarMascotaEnemigo(enemigo){
     
-    spanMascotaEnemigo.innerHTML = mokepones[mascotaAleatorio].nombre
-    ataquesMokeponEnemigo = mokepones[mascotaAleatorio].ataques
+    spanMascotaEnemigo.innerHTML = enemigo.nombre
+    ataquesMokeponEnemigo = enemigo.ataques
 
     if ((mascotaJugador.tipo == 'Fuego' && mascotaAleatorio.tipo == 'Planta') || 
     (mascotaJugador.tipo == 'Agua' && mascotaAleatorio.tipo == 'Fuego') || 
@@ -420,6 +465,8 @@ function iniciarMapa() {
 
     window.addEventListener('keydown', sePresionoTecla)
     window.addEventListener('keyup', detenerMovimimiento)
+
+    sectionSeleccionarMascota.style.display = 'none'
 }
 
 function obtenerObjetoMascota() {
@@ -496,7 +543,12 @@ function revisarColision(enemigo) {
     }
 
     detenerMovimimiento()
-    alert('Hay colision con ' + enemigo.nombre)
+    clearInterval(intervalo)
+    console.log('colision');
+    sectionSeleccionarAtaque.style.display = 'flex'
+    sectionVerMapa.style.display = 'none'
+    seleccionarMascotaEnemigo(enemigo)
+
 }
 
 window.addEventListener('load', iniciarJuego)
