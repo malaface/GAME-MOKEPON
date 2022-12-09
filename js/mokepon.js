@@ -21,6 +21,8 @@ const contenedorAtaques = document.getElementById('contenedor-ataques')
 const sectionVerMapa = document.getElementById('ver-mapa')
 const mapa = document.getElementById('mapa')
 
+const anchoMaximoMapa = 550
+
 let mokepones = []
 let opcionMokepones
 let ataqueJugador = []
@@ -51,18 +53,31 @@ let lienzo = mapa.getContext('2d')
 let intervalo
 let mapaBackground = new Image()
 mapaBackground.src = './css/Assets/mokemap.png'
+let alturaQueBuscamos
+let anchoMapa = window.innerWidth - 40
+
+if (anchoMapa > anchoMaximoMapa) {
+    anchoMapa = anchoMaximoMapa - 20
+}
+
+alturaQueBuscamos = anchoMapa * 600 / 800
+
+mapa.width = anchoMapa
+mapa.height = alturaQueBuscamos
 
 class Mokepon {
-    constructor(nombre, foto, vida, tipo, x = aleatorio(0,400), y = aleatorio(0,320)) {
+    constructor(nombre, foto, vida, tipo,
+         x = aleatorio(0,mapa.width-25),
+          y = aleatorio(0, mapa.height-25)) {
         this.nombre = nombre
         this.foto = foto
         this.vida = vida
         this.tipo = tipo
         this.ataques = []
+        this.ancho = 50
+        this.alto = 50
         this.x = x
         this.y = y
-        this.ancho = 60
-        this.alto = 60
         this.mapaFoto = new Image()
         this.mapaFoto.src = foto
         this.velocidadX = 0
@@ -458,8 +473,8 @@ function pintarCanvas() {
 }
 
 function iniciarMapa() {
-    mapa.width = 420
-    mapa.height = 340
+    mapa.width = anchoMapa
+    mapa.height = alturaQueBuscamos
     mascotaJugadorObjeto = obtenerObjetoMascota(mascotaJugador)
     intervalo = setInterval( pintarCanvas, 50)
 
@@ -544,7 +559,6 @@ function revisarColision(enemigo) {
 
     detenerMovimimiento()
     clearInterval(intervalo)
-    console.log('colision');
     sectionSeleccionarAtaque.style.display = 'flex'
     sectionVerMapa.style.display = 'none'
     seleccionarMascotaEnemigo(enemigo)
