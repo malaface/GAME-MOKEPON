@@ -253,7 +253,19 @@ function iniciarJuego() {
         inputPydos = document.getElementById('Pydos')
         inputTucapalma = document.getElementById('Tucapalma')
     })
-
+    unirseAlJuego()
+}
+//para hacer el llamado tipo Get solo se pega la direccion de la pagina
+function unirseAlJuego(){
+    fetch("http://localhost:8080/unirse")
+        .then(function (res) {
+            if (res.ok) {
+                res.text()
+                .then(function (respuesta) {
+                    console.log(respuesta)
+                })
+            }
+        })
 }
 
 function seleccionarMascotaJugador(){
