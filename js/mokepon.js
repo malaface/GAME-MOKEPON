@@ -67,9 +67,8 @@ mapa.width = anchoMapa
 mapa.height = alturaQueBuscamos
 
 class Mokepon {
-    constructor(nombre, foto, vida, tipo,
-         x = aleatorio(0,mapa.width-25),
-          y = aleatorio(0, mapa.height-25)) {
+    constructor(nombre, foto, vida, tipo, id = null) {
+        this.id = id
         this.nombre = nombre
         this.foto = foto
         this.vida = vida
@@ -77,8 +76,8 @@ class Mokepon {
         this.ataques = []
         this.ancho = 50
         this.alto = 50
-        this.x = x
-        this.y = y
+        this.x = aleatorio(0,mapa.width-this.ancho)
+        this.y = aleatorio(0, mapa.height-this.alto)
         this.mapaFoto = new Image()
         this.mapaFoto.src = foto
         this.velocidadX = 0
@@ -96,136 +95,84 @@ class Mokepon {
 }
 
 let hipodoge = new Mokepon('Hipodoge', 
-'./css/Assets/mokepons_mokepon_hipodoge_attack.png', 5, 'Agua', 10, 10)
-
-let capipepo = new Mokepon('Capipepo', 
-'./css/Assets/mokepons_mokepon_capipepo_attack.png', 5, 'Planta', 10, 10)
-
-let ratigueya = new Mokepon('Ratigueya', 
-'./css/Assets/mokepons_mokepon_ratigueya_attack.png', 5, 'Fuego', 10, 10)
-
-let langostelvis = new Mokepon('Langostelvis', 
-'./css/Assets/mokepons_mokepon_langostelvis_attack.png', 5, 'Fuego', 10, 10)
-
-let pydos = new Mokepon('Pydos', 
-'./css/Assets/mokepons_mokepon_pydos_attack.png', 5, 'Agua', 10, 10)
-
-let tucapalma = new Mokepon('Tucapalma', 
-'./css/Assets/mokepons_mokepon_tucapalma_attack.png', 5, 'Planta', 10, 10)
-
-let hipodogeEnemigo = new Mokepon('Hipodoge', 
 './css/Assets/mokepons_mokepon_hipodoge_attack.png', 5, 'Agua')
 
-let capipepoEnemigo = new Mokepon('Capipepo', 
+let capipepo = new Mokepon('Capipepo', 
 './css/Assets/mokepons_mokepon_capipepo_attack.png', 5, 'Planta')
 
-let ratigueyaEnemigo = new Mokepon('Ratigueya', 
+let ratigueya = new Mokepon('Ratigueya', 
 './css/Assets/mokepons_mokepon_ratigueya_attack.png', 5, 'Fuego')
 
-let langostelvisEnemigo = new Mokepon('Langostelvis', 
+let langostelvis = new Mokepon('Langostelvis', 
 './css/Assets/mokepons_mokepon_langostelvis_attack.png', 5, 'Fuego')
 
-let pydosEnemigo = new Mokepon('Pydos', 
+let pydos = new Mokepon('Pydos', 
 './css/Assets/mokepons_mokepon_pydos_attack.png', 5, 'Agua')
 
-let tucapalmaEnemigo = new Mokepon('Tucapalma', 
+let tucapalma = new Mokepon('Tucapalma', 
 './css/Assets/mokepons_mokepon_tucapalma_attack.png', 5, 'Planta')
 
-hipodoge.ataques.push(
+const hipodogeAtaques = [
     { nombre: '💧', Id: 'boton-agua'},
     { nombre: '💧', Id: 'boton-agua'},
     { nombre: '💧', Id: 'boton-agua'},
     { nombre: '🔥', Id: 'boton-fuego'},
     { nombre: '🌱', Id: 'boton-planta'},
-)
+]
 
-hipodogeEnemigo.ataques.push(
-    { nombre: '💧', Id: 'boton-agua'},
-    { nombre: '💧', Id: 'boton-agua'},
+const capipepoAtaques = [
+    { nombre: '🌱', Id: 'boton-planta'},
+    { nombre: '🌱', Id: 'boton-planta'},
+    { nombre: '🌱', Id: 'boton-planta'},
     { nombre: '💧', Id: 'boton-agua'},
     { nombre: '🔥', Id: 'boton-fuego'},
-    { nombre: '🌱', Id: 'boton-planta'},
-)
+]
 
-capipepo.ataques.push(
-    { nombre: '🌱', Id: 'boton-planta'},
-    { nombre: '🌱', Id: 'boton-planta'},
-    { nombre: '🌱', Id: 'boton-planta'},
-    { nombre: '💧', Id: 'boton-agua'},
+const ratigueyaAtaques = [
     { nombre: '🔥', Id: 'boton-fuego'},
-)
+    { nombre: '🔥', Id: 'boton-fuego'},
+    { nombre: '🔥', Id: 'boton-fuego'},
+    { nombre: '💧', Id: 'boton-agua'},
+    { nombre: '🌱', Id: 'boton-planta'},
+]
 
-capipepoEnemigo.ataques.push(
-    { nombre: '🌱', Id: 'boton-planta'},
-    { nombre: '🌱', Id: 'boton-planta'},
-    { nombre: '🌱', Id: 'boton-planta'},
+const langostelvisAtaques = [
+    { nombre: '💧', Id: 'boton-agua'},
     { nombre: '💧', Id: 'boton-agua'},
     { nombre: '🔥', Id: 'boton-fuego'},
-)
+    { nombre: '🔥', Id: 'boton-fuego'},
+    { nombre: '🔥', Id: 'boton-fuego'},
+]
 
-ratigueya.ataques.push(
-    { nombre: '🔥', Id: 'boton-fuego'},
-    { nombre: '🔥', Id: 'boton-fuego'},
-    { nombre: '🔥', Id: 'boton-fuego'},
+const pydosAtaques = [
+    { nombre: '💧', Id: 'boton-agua'},
+    { nombre: '💧', Id: 'boton-agua'},
     { nombre: '💧', Id: 'boton-agua'},
     { nombre: '🌱', Id: 'boton-planta'},
-)
+    { nombre: '🌱', Id: 'boton-planta'},
+]
 
-ratigueyaEnemigo.ataques.push(
-    { nombre: '🔥', Id: 'boton-fuego'},
-    { nombre: '🔥', Id: 'boton-fuego'},
-    { nombre: '🔥', Id: 'boton-fuego'},
+const tucapalmaAtaques = [
+    { nombre: '💧', Id: 'boton-agua'},
     { nombre: '💧', Id: 'boton-agua'},
     { nombre: '🌱', Id: 'boton-planta'},
-)
+    { nombre: '🌱', Id: 'boton-planta'},
+    { nombre: '🌱', Id: 'boton-planta'},
+]
 
-langostelvis.ataques.push(
-    { nombre: '💧', Id: 'boton-agua'},
-    { nombre: '💧', Id: 'boton-agua'},
-    { nombre: '🔥', Id: 'boton-fuego'},
-    { nombre: '🔥', Id: 'boton-fuego'},
-    { nombre: '🔥', Id: 'boton-fuego'},
-)
+hipodoge.ataques.push(...hipodogeAtaques)
+capipepo.ataques.push(...capipepoAtaques)
+ratigueya.ataques.push(...ratigueyaAtaques)
+langostelvis.ataques.push(...langostelvisAtaques)
+pydos.ataques.push(...pydosAtaques)
+tucapalma.ataques.push(...tucapalmaAtaques)
 
-langostelvisEnemigo.ataques.push(
-    { nombre: '💧', Id: 'boton-agua'},
-    { nombre: '💧', Id: 'boton-agua'},
-    { nombre: '🔥', Id: 'boton-fuego'},
-    { nombre: '🔥', Id: 'boton-fuego'},
-    { nombre: '🔥', Id: 'boton-fuego'},
-)
-
-pydos.ataques.push(
-    { nombre: '💧', Id: 'boton-agua'},
-    { nombre: '💧', Id: 'boton-agua'},
-    { nombre: '💧', Id: 'boton-agua'},
-    { nombre: '🌱', Id: 'boton-planta'},
-    { nombre: '🌱', Id: 'boton-planta'},
-)
-
-pydosEnemigo.ataques.push(
-    { nombre: '💧', Id: 'boton-agua'},
-    { nombre: '💧', Id: 'boton-agua'},
-    { nombre: '💧', Id: 'boton-agua'},
-    { nombre: '🌱', Id: 'boton-planta'},
-    { nombre: '🌱', Id: 'boton-planta'},
-)
-
-tucapalma.ataques.push(
-    { nombre: '💧', Id: 'boton-agua'},
-    { nombre: '💧', Id: 'boton-agua'},
-    { nombre: '🌱', Id: 'boton-planta'},
-    { nombre: '🌱', Id: 'boton-planta'},
-    { nombre: '🌱', Id: 'boton-planta'},
-)
-
-tucapalmaEnemigo.ataques.push(
-    { nombre: '💧', Id: 'boton-agua'},
-    { nombre: '💧', Id: 'boton-agua'},
-    { nombre: '🌱', Id: 'boton-planta'},
-    { nombre: '🌱', Id: 'boton-planta'},
-    { nombre: '🌱', Id: 'boton-planta'},
-)
+//hipodogeEnemigo.ataques.push(...hipodogeAtaques)
+//capipepoEnemigo.ataques.push(...capipepoAtaques)
+//ratigueyaEnemigo.ataques.push(...ratigueyaAtaques)
+//langostelvisEnemigo.ataques.push(...langostelvisAtaques)
+//pydosEnemigo.ataques.push(...pydosAtaques)
+//tucapalmaEnemigo.ataques.push(...tucapalmaAtaques)
 
 mokepones.push(hipodoge, capipepo, ratigueya, langostelvis, pydos, tucapalma)
 
@@ -488,32 +435,57 @@ function pintarCanvas() {
 
         enviarPosicion(mascotaJugadorObjeto.x, mascotaJugadorObjeto.y)
 
-        capipepoEnemigo.pintaMokepon()
-        hipodogeEnemigo.pintaMokepon()
-        ratigueyaEnemigo.pintaMokepon()
-        langostelvisEnemigo.pintaMokepon()
-        pydosEnemigo.pintaMokepon()
-        tucapalmaEnemigo.pintaMokepon()
-        if (mascotaJugadorObjeto !== 0 || mascotaJugadorObjeto !== 0) {
-            revisarColision(hipodogeEnemigo)
-            revisarColision(capipepoEnemigo)
-            revisarColision(ratigueyaEnemigo)
-            revisarColision(langostelvisEnemigo)
-            revisarColision(pydosEnemigo)
-            revisarColision(tucapalmaEnemigo)
-        }
+
 }
 
 function enviarPosicion(x, y) {
     fetch(`http://localhost:8080/mokepon/${jugadorId}/posicion`, {
         method: 'post',
         headers: {
-            'Content-Tipe': 'application/jason'
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify({
             x,
             y
         })
+    })
+    .then(function (res)  {
+        if (res.ok) {
+            res.json() 
+                .then(function ({enemigos}) {
+                    console.log(enemigos)
+
+                    enemigos.forEach(function (enemigo) {
+                        let mokeponEnemigo
+                        const mokeponNombre = enemigo.mokepon.nombre || ''
+                        if (mokeponNombre === "Hipodoge") {
+                            mokeponEnemigo = new Mokepon('Hipodoge', 
+                            './css/Assets/mokepons_mokepon_hipodoge_attack.png', 5, 'Agua')
+                        }else if (mokeponNombre === "Capipepo") {
+                            mokeponEnemigo = new Mokepon('Capipepo', 
+                            './css/Assets/mokepons_mokepon_capipepo_attack.png', 5, 'Planta')
+                        }else if (mokeponNombre === "Ratigueya") {
+                            mokeponEnemigo = new Mokepon('Ratigueya', 
+                            './css/Assets/mokepons_mokepon_ratigueya_attack.png', 5, 'Fuego')
+                        }else if (mokeponNombre === "Langostelvis") {
+                            mokeponEnemigo = new Mokepon('Langostelvis', 
+                            './css/Assets/mokepons_mokepon_langostelvis_attack.png', 5, 'Fuego')
+                        }else if (mokeponNombre === "Pydos") {
+                            mokeponEnemigo = new Mokepon('Pydos', 
+                            './css/Assets/mokepons_mokepon_pydos_attack.png', 5, 'Agua')
+                        }else if (mokeponNombre === "Tucapalma") {
+                            mokeponEnemigo = new Mokepon('Tucapalma', 
+                            './css/Assets/mokepons_mokepon_tucapalma_attack.png', 5, 'Planta')
+                        }
+                        
+                        mokeponEnemigo.x = enemigo.x
+                        mokeponEnemigo.y = enemigo.y
+
+                        mokeponEnemigo.pintaMokepon()
+
+                    })
+                })
+        }
     })
 }
 
